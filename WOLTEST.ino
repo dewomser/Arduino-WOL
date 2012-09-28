@@ -23,25 +23,33 @@ void loop() {
 
    bufIDX=0;
   // filling buffer with some data ...
+
+	//start out, 6 bytes of 0xFF
   for (int i=0; i<=5; i++) {
     buf[bufIDX]=0xFF;
     bufIDX++;
   }
+
+	//followed by the "senders" mac
+	//which is made up
   for (int i=0;i<=5;i++){
      buf[bufIDX]=mac[i];
-    bufIDX++; 
+     bufIDX++; 
   }
   
+	//ether type
   buf[bufIDX]=0x08;
   bufIDX++;
   buf[bufIDX]=0x42;
   bufIDX++;
 
+	//antoher series of 0xFF
   for (int i=0; i<=5; i++) {
     buf[bufIDX]=0xFF;
     bufIDX++;
   }
 
+	//repeat target mac 16 times 
   for (int repeats=0;repeats<=15;repeats++){
     for (int i =0; i <=5;i++){
       buf[bufIDX]=targetmac[i];
@@ -53,6 +61,8 @@ void loop() {
   W5100.execCmdSn(s, Sock_SEND_MAC);
  
   for(;;){
-    
+    //lalalalalalalalalala
   }
+
+	
 }
